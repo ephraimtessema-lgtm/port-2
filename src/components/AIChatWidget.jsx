@@ -274,53 +274,54 @@ export default function AIChatWidget({ onOpenContactModal }) {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 pointer-events-auto font-sans">
-      
-      {/* Floating Toggle Button */}
-      {!isOpen && (
-        <motion.button
-          onClick={() => setIsOpen(true)}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="relative group p-4 rounded-full bg-[#121624] text-white border border-[#FF961B]/50 shadow-[0_0_25px_rgba(255,150,27,0.35)] flex items-center gap-3 cursor-pointer"
-          aria-label="Open AI Assistant"
-        >
-          {/* Subtle pulsing background glow */}
-          <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#FF8A00] to-amber-500 opacity-30 blur-sm group-hover:opacity-60 transition duration-300" />
+    <div className="fixed bottom-5 right-5 z-50 pointer-events-none font-sans">
+      <AnimatePresence mode="wait">
+        {/* Floating Toggle Button */}
+        {!isOpen ? (
+          <motion.button
+            key="ai-toggle-btn"
+            onClick={() => setIsOpen(true)}
+            initial={{ scale: 0.85, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.85, opacity: 0 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.18, ease: 'easeOut' }}
+            className="pointer-events-auto relative group p-4 rounded-full bg-[#121624] text-white border border-[#FF961B]/50 shadow-[0_0_25px_rgba(255,150,27,0.35)] flex items-center gap-3 cursor-pointer origin-bottom-right"
+            aria-label="Open AI Assistant"
+          >
+            {/* Subtle pulsing background glow */}
+            <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#FF8A00] to-amber-500 opacity-30 blur-sm group-hover:opacity-60 transition duration-300" />
 
-          <div className="relative flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-[#FF961B] text-black flex items-center justify-center font-bold">
-              <Bot className="w-5 h-5 stroke-[2.2]" />
+            <div className="relative flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-[#FF961B] text-black flex items-center justify-center font-bold">
+                <Bot className="w-5 h-5 stroke-[2.2]" />
+              </div>
+
+              <div className="hidden sm:flex flex-col items-start text-left pr-1">
+                <span className="text-xs font-bold text-white flex items-center gap-1.5 leading-none mb-1">
+                  Chat with AI Assistant
+                  <Sparkles className="w-3 h-3 text-[#FF961B]" />
+                </span>
+                <span className="text-[10px] text-zinc-400 font-mono">
+                  Hybrid Guide · Skills & Projects
+                </span>
+              </div>
+
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse sm:ml-1" />
             </div>
-
-            <div className="hidden sm:flex flex-col items-start text-left pr-1">
-              <span className="text-xs font-bold text-white flex items-center gap-1.5 leading-none mb-1">
-                Chat with AI Assistant
-                <Sparkles className="w-3 h-3 text-[#FF961B]" />
-              </span>
-              <span className="text-[10px] text-zinc-400 font-mono">
-                Hybrid Guide · Skills & Projects
-              </span>
-            </div>
-
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse sm:ml-1" />
-          </div>
-        </motion.button>
-      )}
-
-      {/* Chat Window Dialog */}
-      <AnimatePresence>
-        {isOpen && (
+          </motion.button>
+        ) : (
+          /* Chat Window Dialog */
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.92 }}
+            key="ai-dialog"
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 30, scale: 0.92 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0, y: 16, scale: 0.96 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             role="dialog"
             aria-label="Ephraim AI Portfolio Assistant"
-            className={`surface-card rounded-3xl border border-white/15 shadow-2xl flex flex-col overflow-hidden bg-[#0D111D]/95 backdrop-blur-xl transition-all duration-300 ${
+            className={`pointer-events-auto origin-bottom-right surface-card rounded-3xl border border-white/15 shadow-2xl flex flex-col overflow-hidden bg-[#0D111D]/95 backdrop-blur-xl transition-all duration-300 ${
               isExpanded
                 ? 'w-[94vw] sm:w-[540px] h-[85vh] sm:h-[680px]'
                 : 'w-[92vw] sm:w-[410px] h-[520px]'

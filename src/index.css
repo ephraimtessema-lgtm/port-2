@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary-orange: #FF961B;
+    --primary-orange-hover: #ff8400;
+    --dark-bg: #080B13;
+    --card-bg: rgba(17, 22, 34, 0.85);
+    --pill-bg: rgba(22, 27, 42, 0.75);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #080B13;
+    color: #F4F4F5;
+    overflow-x: hidden;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Subtle developer grid pattern */
+.bg-dev-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-dev-lines {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Custom radial background atmosphere */
+.ambient-glow-hero {
+  background: 
+    radial-gradient(circle at 12% 18%, rgba(56, 189, 248, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(255, 150, 27, 0.09) 0%, transparent 50%),
+    radial-gradient(circle at 50% 65%, rgba(147, 51, 234, 0.04) 0%, transparent 60%);
+}
+
+.ambient-glow-section {
+  background: 
+    radial-gradient(circle at 80% 40%, rgba(255, 150, 27, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 20% 70%, rgba(59, 130, 246, 0.04) 0%, transparent 40%);
+}
+
+/* Glassmorphism nav styling */
+.glass-nav {
+  background: rgba(18, 22, 34, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 20px 40px -15px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Card surfaces with 3D capability */
+.surface-card {
+  background: rgba(18, 22, 34, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.surface-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* 3D tilt perspective wrapper */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.translate-z-10 {
+  transform: translateZ(10px);
+}
+
+.translate-z-20 {
+  transform: translateZ(20px);
+}
+
+.translate-z-30 {
+  transform: translateZ(30px);
+}
+
+/* Orange button glow */
+.btn-orange-glow {
+  background: linear-gradient(135deg, #FFA114 0%, #FF8A00 100%);
+  box-shadow: 0 8px 24px -4px rgba(255, 140, 0, 0.45);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-orange-glow:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px -4px rgba(255, 140, 0, 0.6);
+  filter: brightness(1.05);
+}
+
+.btn-orange-glow:active {
+  transform: translateY(1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080B13;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}

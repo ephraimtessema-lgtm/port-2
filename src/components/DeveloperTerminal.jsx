@@ -10,7 +10,7 @@ export default function DeveloperTerminal() {
   ]);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(`git clone https://github.com/ephraimtessema-lgtm/portfolio.git`);
+    navigator.clipboard.writeText(`git clone https://github.com/ephraimtessema-lgtm/port-2.git`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

@@ -47,8 +47,8 @@ The portfolio includes an on-site hybrid AI assistant:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/ephraimtessema-lgtm/portfolio.git
-   cd portfolio
+   git clone https://github.com/ephraimtessema-lgtm/port-2.git
+   cd port-2
    ```
 
 2. **Install dependencies:**
